@@ -1,3 +1,8 @@
+function stripHTML(text) {
+  const doc = new DOMParser().parseFromString(text, 'text/html');
+  return doc.body.textContent || "";
+}
+
 // APlayer
 const aplayer = document.querySelector("#aplayer");
 if (aplayer) {
@@ -9,11 +14,13 @@ if (aplayer) {
 
   const ap = new APlayer({
     container: aplayer,
+    lrcType: 1,
     audio: [{
       name: dataSong.title,
       artist: dataSinger.fullName,
       url: dataSong.audio,
-      cover: dataSong.avatar
+      cover: dataSong.avatar,
+      lrc: stripHTML(dataSong.lyrics).replace(/<br>/g, '\n'),
     }],
     autoplay: true
   });
@@ -38,6 +45,9 @@ if (aplayer) {
           const innerListen = document.querySelector(".singer-detail .inner-actions .inner-listen .inner-number");
           innerListen.innerHTML = `${data.listen} lượt nghe`;
         }
+      })
+      .catch(err => {
+        console.error(err);
       })
   });
 }

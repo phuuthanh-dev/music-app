@@ -1,0 +1,55 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+
+block main
+    .box-content
+        .wrap
+            .content-wrap
+                .box_content
+                .box-left
+                    .list_album
+                        .fram_select
+                            .tile_box_key
+                                +box-head('Vũ Trụ Nhạc Việt')
+                            ul
+                                each topic in topics
+                                    li(style='height: auto;')
+                                        .box-left-album
+                                            a.box_absolute(href=`/songs/${topic.slug}`)
+                                                span.avatar
+                                                    img(src=topic.avatar)
+                                        .info_album
+                                            h3.h3seo
+                                                a.name_song.text-dark(href=`/songs/${topic.slug}`)= topic.title
+                    .list_album
+                        .fram_select
+                            .tile_box_key
+                                +box-head('Tâm Trạng Hôm Nay')
+                            ul
+                                each topic in topicsLofi
+                                    li(style='height: auto;')
+                                        .box-left-album
+                                            a.box_absolute(href=`/songs/${topic.slug}`)
+                                                span.avatar
+                                                    img(src=topic.avatar)
+                                        .info_album
+                                            h3.h3seo
+                                                a.name_song.text-dark(href=`/songs/${topic.slug}`)= topic.title
+                .box-right
+                    .box_chart_music
+                        .tile_box_key
+                            +box-head('BXH Bài Hát')
+                        .btn_tab_select
+                            a(id='top20__nhac-viet' class='active' title='Việt Nam') Việt Nam
+                            a(id='top20__au-my'  title='Âu Mỹ') Âu Mỹ
+                            a(id='top20__nhac-han'  title='Hàn Quốc') Hàn Quốc
+                        .list_chart_music
+                            ul(style='padding: 0;')
+                                each chart in songs
+                                    li.one
+                                        .info_data
+                                            a.img(href=`/songs/detail/${chart.slug}`)
+                                                img(src=chart.avatar)
+                                            h3
+                                                a.name_song.text-dark(href=`/songs/detail/${chart.slug}`)= chart.title

@@ -168,6 +168,12 @@ var editPatch = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 if (req.body.audio) {
                     audio = req.body.audio[0];
                 }
+                if (avatar === '') {
+                    avatar = song.avatar;
+                }
+                if (audio === '') {
+                    audio = song.audio;
+                }
                 dataSong = {
                     title: req.body.title,
                     topicId: req.body.topicId,

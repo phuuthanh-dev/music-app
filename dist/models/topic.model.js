@@ -10,6 +10,7 @@ var topicSchema = new mongoose_1.default.Schema({
     description: String,
     status: String,
     slug: String,
+    type: String,
     deleted: {
         type: Boolean,
         default: false
