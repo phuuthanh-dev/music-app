@@ -24,7 +24,7 @@ app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 
 // App Local Variables
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
